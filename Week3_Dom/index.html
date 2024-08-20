@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Application</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+
+    <ul id="ul">
+      <!-- 1.Todo 1  -->
+    </ul>
+    <br />
+    <form id="form">
+      <input required id="input" type="text" placeholder="Add your todo here" />
+      <button>Add Todo</button>
+    </form>
+  </body>
+
+  <script>
+    const form = document.getElementById("form");
+    const ul = document.getElementById("ul");
+
+    form.onsubmit = (event) => {
+      console.log("Open");
+      event.preventDefault();
+
+      const input = document.getElementById("input");
+      const inputValue = input.value;
+
+      if (input.value === "") {
+        alert("Invalid data!");
+        return;
+      }
+      let li = document.createElement("li");
+      let btn = document.createElement("button");
+
+      li.innerText = inputValue;
+      btn.innerHTML = "delete";
+
+      ul.appendChild(li);
+      li.appendChild(btn);
+
+      input.value = "";
+
+      btn.addEventListener("click", () => {
+        console.log(li);
+        ul.removeChild(li);
+      });
+
+      console.log("Close");
+    };
+  </script>
+</html>
